@@ -25,17 +25,9 @@
             transition: background-color 0.3s ease;
         }
 
-        /* V2 Redesign: New animated gradient for dark mode */
+        /* V2 Redesign: Dark gray background for dark mode */
         .dark body {
-            background: linear-gradient(-45deg, #111827, #1e1b4b, #312e81, #111827);
-            background-size: 400% 400%;
-            animation: gradientBG 20s ease infinite;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background-color: #0f172a; /* slate-900 */
         }
 
         /* V2 Redesign: Updated light mode background */
@@ -45,7 +37,7 @@
 
         .loader {
             border: 4px solid #e2e8f0; /* slate-200 */
-            border-top: 4px solid #4f46e5; /* indigo-600 */
+            border-top: 4px solid #0d9488; /* teal-600 */
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -53,7 +45,7 @@
         }
         .dark .loader {
             border-color: #475569; /* slate-600 */
-            border-top-color: #818cf8; /* indigo-400 */
+            border-top-color: #2dd4bf; /* teal-400 */
         }
 
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -182,7 +174,7 @@
             }
 
             return (
-                <div className="min-h-screen bg-slate-50 dark:bg-transparent text-slate-800 dark:text-slate-200">
+                <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
                     {user ? (
                         <>
                             {/* V2 Redesign: Top Header Navigation */}
@@ -244,7 +236,7 @@
         function NavItem({ icon, label, active, onClick, isMobile = false }) {
             if (isMobile) {
                 return (
-                    <button onClick={onClick} className={`flex-1 flex flex-col items-center space-y-1 p-2 rounded-lg transition-colors ${active ? 'bg-indigo-500/20 text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'}`}>
+                    <button onClick={onClick} className={`flex-1 flex flex-col items-center space-y-1 p-2 rounded-lg transition-colors ${active ? 'bg-teal-500/20 text-teal-600 dark:text-teal-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'}`}>
                         {icon}
                         <span className="text-xs font-medium">{label}</span>
                     </button>
@@ -252,7 +244,7 @@
             }
             
             return (
-                <button onClick={onClick} className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${active ? 'bg-indigo-100 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'}`}>
+                <button onClick={onClick} className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${active ? 'bg-teal-100 dark:bg-teal-500/20 text-teal-600 dark:text-teal-400' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800'}`}>
                     {icon}
                     <span>{label}</span>
                 </button>
@@ -343,15 +335,15 @@
                              <form onSubmit={handlePasswordReset} className="space-y-6">
                                  <div>
                                      <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Email Address</label>
-                                     <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="mt-1 block w-full p-2.5 rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                                     <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="mt-1 block w-full p-2.5 rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-teal-500 focus:ring-teal-500" />
                                  </div>
                                  {error && <p className="text-red-500 dark:text-red-400 text-sm">{error}</p>}
                                  {message && <p className="text-green-600 dark:text-green-400 text-sm">{message}</p>}
-                                 <button type="submit" disabled={loading} className="w-full py-2.5 px-4 rounded-md border border-transparent bg-indigo-600 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 transition-colors">
+                                 <button type="submit" disabled={loading} className="w-full py-2.5 px-4 rounded-md border border-transparent bg-teal-600 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 transition-colors">
                                      {loading ? <div className="loader mx-auto" style={{width: '20px', height: '20px'}}></div> : 'Send Reset Link'}
                                  </button>
                                  <p className="text-sm text-center">
-                                     <button type="button" onClick={() => setShowReset(false)} className="font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">
+                                     <button type="button" onClick={() => setShowReset(false)} className="font-medium text-teal-600 dark:text-teal-400 hover:text-teal-500 dark:hover:text-teal-300">
                                          Back to Login
                                      </button>
                                  </p>
@@ -361,28 +353,28 @@
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div>
                                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Email Address</label>
-                                        <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="mt-1 block w-full p-2.5 rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                                        <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="mt-1 block w-full p-2.5 rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-teal-500 focus:ring-teal-500" />
                                     </div>
                                     <div>
                                         <div className="flex justify-between items-center">
                                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Password</label>
                                             {isLogin && (
-                                                <button type="button" onClick={() => setShowReset(true)} className="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">
+                                                <button type="button" onClick={() => setShowReset(true)} className="text-sm font-medium text-teal-600 dark:text-teal-400 hover:text-teal-500 dark:hover:text-teal-300">
                                                     Forgot password?
                                                 </button>
                                             )}
                                         </div>
-                                        <input type="password" value={password} onChange={e => setPassword(e.target.value)} required className="mt-1 block w-full p-2.5 rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+                                        <input type="password" value={password} onChange={e => setPassword(e.target.value)} required className="mt-1 block w-full p-2.5 rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-teal-500 focus:ring-teal-500" />
                                     </div>
                                     {error && <p className="text-red-500 dark:text-red-400 text-sm">{error}</p>}
                                     {message && <p className="text-green-600 dark:text-green-400 text-sm">{message}</p>}
-                                    <button type="submit" disabled={loading} className="w-full py-2.5 px-4 rounded-md border border-transparent bg-indigo-600 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 transition-colors">
+                                    <button type="submit" disabled={loading} className="w-full py-2.5 px-4 rounded-md border border-transparent bg-teal-600 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 disabled:opacity-50 transition-colors">
                                         {loading ? <div className="loader mx-auto" style={{width: '20px', height: '20px'}}></div> : (isLogin ? 'Sign In' : 'Sign Up')}
                                     </button>
                                 </form>
                                 <p className="text-sm text-center text-slate-600 dark:text-slate-400">
                                     {isLogin ? "Don't have an account?" : "Already have an account?"}
-                                    <button onClick={() => { setIsLogin(!isLogin); setError(''); setMessage(''); }} className="font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 ml-1">
+                                    <button onClick={() => { setIsLogin(!isLogin); setError(''); setMessage(''); }} className="font-medium text-teal-600 dark:text-teal-400 hover:text-teal-500 dark:hover:text-teal-300 ml-1">
                                         {isLogin ? 'Sign up' : 'Sign in'}
                                     </button>
                                 </p>
@@ -653,11 +645,11 @@
                        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
                            <div className="md:col-span-2">
                                <label htmlFor="search-input" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Search Term</label>
-                               <input type="text" id="search-input" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} placeholder="Enter UPC, Item Name, etc." className="block w-full rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2.5" />
+                               <input type="text" id="search-input" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} placeholder="Enter UPC, Item Name, etc." className="block w-full rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm p-2.5" />
                            </div>
                            <div>
                                <label htmlFor="search-type" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Search By</label>
-                               <select id="search-type" value={searchType} onChange={e => setSearchType(e.target.value)} className="block w-full rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2.5">
+                               <select id="search-type" value={searchType} onChange={e => setSearchType(e.target.value)} className="block w-full rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm p-2.5">
                                    <option value="upc">UPC</option>
                                    <option value="itemName_lowercase">Item Name</option>
                                    <option value="brand">Brand</option>
@@ -665,7 +657,7 @@
                                </select>
                            </div>
                            <div className="md:col-span-2 flex items-center space-x-3">
-                               <button onClick={handleSearchClick} className="w-full inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2.5 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 transition-all">Search</button>
+                               <button onClick={handleSearchClick} className="w-full inline-flex justify-center rounded-md border border-transparent bg-teal-600 py-2.5 px-4 text-sm font-medium text-white shadow-sm hover:bg-teal-700 transition-all">Search</button>
                                <button onClick={onBrowseAll} className="w-full inline-flex justify-center rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 py-2.5 px-4 text-sm font-medium text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-100 dark:hover:bg-slate-600 transition-all">Browse All</button>
                            </div>
                        </div>
@@ -676,7 +668,7 @@
                                rows="4" 
                                value={upcList}
                                onChange={e => setUpcList(e.target.value)}
-                               className="mt-1 block w-full rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2" 
+                               className="mt-1 block w-full rounded-md border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm focus:border-teal-500 focus:ring-teal-500 sm:text-sm p-2" 
                                placeholder="Paste a list of UPCs, one per line or separated by commas (up to 300)"
                            ></textarea>
                            <button 
@@ -695,7 +687,7 @@
             const priceText = !isNaN(price) && price >= 0 ? '$' + price.toFixed(2) : 'N/A';
             const placeholderImg = 'https://i.imgur.com/IUBzxFv.jpeg';
             return (
-                <div onClick={onCardClick} className="result-card bg-white dark:bg-slate-800/80 rounded-xl shadow-lg overflow-hidden flex flex-col border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-indigo-500 dark:hover:border-indigo-400 hover:scale-105 transition-all duration-300" style={style}>
+                <div onClick={onCardClick} className="result-card bg-white dark:bg-slate-800/80 rounded-xl shadow-lg overflow-hidden flex flex-col border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-teal-500 dark:hover:border-teal-400 hover:scale-105 transition-all duration-300" style={style}>
                     <div className="w-full h-48 bg-white flex items-center justify-center p-2">
                         <img src={item.imageUrl || placeholderImg} alt={item.itemName} className="w-full h-full object-contain" onError={(e) => e.target.src=placeholderImg} />
                     </div>
@@ -964,7 +956,7 @@ curl -L -X GET "${API_URL}?page=2&limit=50" \\
                                 <div className="flex-grow p-4 rounded-md font-mono text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
                                     {showKey ? apiKey : '************************************'}
                                 </div>
-                                <button onClick={() => setShowKey(!showKey)} title={showKey ? 'Hide key' : 'Show key'} className="p-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-500 dark:text-slate-400">
+                                <button onClick={() => setShowKey(!showKey)} title={showKey ? 'Hide key' : 'Show key'} className="p-2 rounded-md hover:bg-slate-200 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-teal-500 text-slate-500 dark:text-slate-400">
                                     {showKey ? (
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" /></svg>
                                     ) : (
@@ -975,7 +967,7 @@ curl -L -X GET "${API_URL}?page=2&limit=50" \\
                                <div className="mt-6">
                                  <h3 className="text-lg font-medium text-slate-900 dark:text-white">Usage (Last 24 Hours)</h3>
                                  <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 mt-2">
-                                     <div className="bg-indigo-500 h-2.5 rounded-full" style={{ width: `${(usage.count / usage.limit) * 100}%` }}></div>
+                                     <div className="bg-teal-500 h-2.5 rounded-full" style={{ width: `${(usage.count / usage.limit) * 100}%` }}></div>
                                  </div>
                                  <p className="text-right text-sm text-slate-500 dark:text-slate-400 mt-1">{usage.count} / {usage.limit} calls</p>
                                </div>
